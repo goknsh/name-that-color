@@ -1,0 +1,12 @@
+* {
+    font-family: "Lab Grotesque" !important;
+}
+h1 {
+    margin: 0;
+    font-weight: 900;
+    line-height: 1;
+    font-size: 1.75rem;
+}
+p {
+    font-size: .7rem !important;
+}

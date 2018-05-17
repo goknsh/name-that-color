@@ -1,0 +1,44 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "*-Info.plist": {
+        "parents": {
+          "CFBundleURLTypes": [
+            {
+              "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>name.ark.ntc</string></array></dict></array>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "name.ark.ntc",
+      "PACKAGE_NAME": "name.ark.ntc"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "name.ark.ntc"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+      "file": "plugins/cordova-plugin-customurlscheme/www/ios/LaunchMyApp.js",
+      "pluginId": "cordova-plugin-customurlscheme",
+      "clobbers": [
+        "window.plugins.launchmyapp"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-customurlscheme": "4.3.0",
+    "cordova-plugin-whitelist": "1.3.3"
+  }
+}

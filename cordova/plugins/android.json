@@ -1,0 +1,22 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "name.ark.ntc"
+    },
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "name.ark.ntc",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/",
+      "PACKAGE_NAME": "name.ark.ntc"
+    }
+  },
+  "dependent_plugins": {}
+}

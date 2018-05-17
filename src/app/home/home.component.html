@@ -1,0 +1,26 @@
+<div class="hero">
+    <div class="inner">
+        <h1>Name that<br>Color</h1>
+        <clr-icon shape="play" class="is-solid" size="120" (click)="play();"></clr-icon>
+        
+        <input type="radio" name="levels" id="level1-input" class="level1" checked="true">
+        <input type="radio" name="levels" id="level2-input" class="level2">
+        <input type="radio" name="levels" id="level3-input" class="level3">
+        <input type="radio" name="levels" id="level4-input" class="level4">
+        <input type="radio" name="levels" id="level5-input" class="level5">
+        
+        <div class="levels-select">
+            <p>Select Level</p>
+            <label for="level1-input" class="level1" id="level1">1</label>
+            <label for="level2-input" class="level2" id="level2">2</label>
+            <label for="level3-input" class="level3" id="level3">3</label>
+            <label for="level4-input" class="level4" id="level4">4</label>
+            <label for="level5-input" class="level5" id="level5">5</label>
+        </div>
+        
+        <p>Coming Soon:</p>
+        <button class="btn btn-primary" disabled>Multiplayer</button>
+        <button class="btn btn-primary" disabled>Custom Games</button>
+        
+    </div>
+</div>

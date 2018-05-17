@@ -1,0 +1,14 @@
+<div class="level">
+    <div class="question"><h1 [style.color]="color">{{ question }}{{ time }}</h1></div>
+    <div class="answers">
+        <div class="answer" id="red"></div>
+        <div class="answer" id="yellow"></div>
+    </div>
+    <div class="answers">
+        <div class="answer" id="blue"></div>
+        <div class="answer" id="green"></div>
+    </div>
+    <button class="btn btn-primary" (click)="play()" [disabled]="buttonDisabled">{{ buttonText }}{{ score }}</button>
+    <p class="previousScore">Previous Score: {{ previousScore }}</p>
+    <p class="highScore" [hidden]="!loggedIn">High Score: {{ highScore }}</p>
+</div>

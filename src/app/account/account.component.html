@@ -1,0 +1,16 @@
+<div class="hero">
+    <div *ngIf="afAuth.authState | async as user; else showLogin">
+        <h1>Welcome back, {{ user.displayName }}!</h1>
+        <h4>Level 1 High Score: {{ score[0] }}
+        <br>Level 2 High Score: {{ score[1] }}
+        <br>Level 3 High Score: {{ score[2] }}
+        <br>Level 4 High Score: {{ score[3] }}
+        <br>Level 5 High Score: {{ score[4] }}</h4>
+        <a href="/leaderboards" routerLink="/leaderboards" class="btn btn-outline">Leaderboards</a>
+        <a class="btn btn-primary" (click)="logout()">Logout</a>
+    </div>
+    <ng-template #showLogin>
+        <h1>Login/Signup</h1>
+        <a class="btn btn-primary" (click)="login()">Login/Signup with Google</a>
+    </ng-template>
+</div>

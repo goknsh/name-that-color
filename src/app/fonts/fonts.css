@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-Black.eot');
+    src: local('Lab Grotesque Black'), local('LabGrotesque-Black'),
+        url('hinted-LabGrotesque-Black.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-Black.woff2') format('woff2'),
+        url('hinted-LabGrotesque-Black.woff') format('woff'),
+        url('hinted-LabGrotesque-Black.svg#LabGrotesque-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-LightItalic.eot');
+    src: local('Lab Grotesque Light Italic'), local('LabGrotesque-LightItalic'),
+        url('hinted-LabGrotesque-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-LightItalic.woff2') format('woff2'),
+        url('hinted-LabGrotesque-LightItalic.woff') format('woff'),
+        url('hinted-LabGrotesque-LightItalic.svg#LabGrotesque-LightItalic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-Light.eot');
+    src: local('Lab Grotesque Light'), local('LabGrotesque-Light'),
+        url('hinted-LabGrotesque-Light.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-Light.woff2') format('woff2'),
+        url('hinted-LabGrotesque-Light.woff') format('woff'),
+        url('hinted-LabGrotesque-Light.svg#LabGrotesque-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-MediumItalic.eot');
+    src: local('Lab Grotesque Medium Italic'), local('LabGrotesque-MediumItalic'),
+        url('hinted-LabGrotesque-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-MediumItalic.woff2') format('woff2'),
+        url('hinted-LabGrotesque-MediumItalic.woff') format('woff'),
+        url('hinted-LabGrotesque-MediumItalic.svg#LabGrotesque-MediumItalic') format('svg');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-Italic.eot');
+    src: local('Lab Grotesque Italic'), local('LabGrotesque-Italic'),
+        url('hinted-LabGrotesque-Italic.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-Italic.woff2') format('woff2'),
+        url('hinted-LabGrotesque-Italic.woff') format('woff'),
+        url('hinted-LabGrotesque-Italic.svg#LabGrotesque-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-BlackItalic.eot');
+    src: local('Lab Grotesque Black Italic'), local('LabGrotesque-BlackItalic'),
+        url('hinted-LabGrotesque-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-BlackItalic.woff2') format('woff2'),
+        url('hinted-LabGrotesque-BlackItalic.woff') format('woff'),
+        url('hinted-LabGrotesque-BlackItalic.svg#LabGrotesque-BlackItalic') format('svg');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-BoldItalic.eot');
+    src: local('Lab Grotesque Bold Italic'), local('LabGrotesque-BoldItalic'),
+        url('hinted-LabGrotesque-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-BoldItalic.woff2') format('woff2'),
+        url('hinted-LabGrotesque-BoldItalic.woff') format('woff'),
+        url('hinted-LabGrotesque-BoldItalic.svg#LabGrotesque-BoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-Bold.eot');
+    src: local('Lab Grotesque Bold'), local('LabGrotesque-Bold'),
+        url('hinted-LabGrotesque-Bold.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-Bold.woff2') format('woff2'),
+        url('hinted-LabGrotesque-Bold.woff') format('woff'),
+        url('hinted-LabGrotesque-Bold.svg#LabGrotesque-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-Medium.eot');
+    src: local('Lab Grotesque Medium'), local('LabGrotesque-Medium'),
+        url('hinted-LabGrotesque-Medium.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-Medium.woff2') format('woff2'),
+        url('hinted-LabGrotesque-Medium.woff') format('woff'),
+        url('hinted-LabGrotesque-Medium.svg#LabGrotesque-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lab Grotesque';
+    src: url('hinted-LabGrotesque-Regular.eot');
+    src: local('Lab Grotesque Regular'), local('LabGrotesque-Regular'),
+        url('hinted-LabGrotesque-Regular.eot?#iefix') format('embedded-opentype'),
+        url('hinted-LabGrotesque-Regular.woff2') format('woff2'),
+        url('hinted-LabGrotesque-Regular.woff') format('woff'),
+        url('hinted-LabGrotesque-Regular.svg#LabGrotesque-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

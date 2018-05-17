@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "name.ark.ntc",
+      "PACKAGE_NAME": "name.ark.ntc"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "name.ark.ntc"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [],
+  "plugin_metadata": {
+    "cordova-plugin-customurlscheme": "4.3.0",
+    "cordova-plugin-whitelist": "1.3.3"
+  }
+}

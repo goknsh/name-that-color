@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Name that Color",
+  "short_name": "Name that Color",
+  "version": "name.ark.ntc",
+  "description": "A simple but addictive game",
+  "author": "Akaanksh Raj",
+  "icons": [],
+  "start_url": "index.html"
+}

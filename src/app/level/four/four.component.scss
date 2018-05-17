@@ -1,0 +1,25 @@
+.level {
+    text-align: center;
+    .question {
+        margin: 0 0 15px 0;
+    }
+    .answers {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        .answer {
+            cursor: pointer;
+            h3 {
+                margin: 10px 0 0 0;
+                font-weight: 600;
+            }
+        }
+    }
+    .highScore {
+        margin: 10px 0 0 0;
+    }
+    button {
+        margin: 25px 0 0 0;
+    }
+}

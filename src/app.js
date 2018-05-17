@@ -1,0 +1,7 @@
+const ntc = {
+    
+    init: function() {
+        
+    }
+    
+}
