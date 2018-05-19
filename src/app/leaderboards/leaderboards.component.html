@@ -13,63 +13,83 @@
         </clr-dropdown-menu>
     </clr-dropdown>
     
-    <clr-datagrid [hidden]="!level1Display">
+    <clr-datagrid [hidden]="!level1Display" style="max-height:450px">
+        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+        
+        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
         <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column>Score</clr-dg-column>
+        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
     
         <clr-dg-row *ngFor="let score of level1Scores; let i = index" [attr.data-index]="i">
+            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
             <clr-dg-cell>{{level1Names[i]}}</clr-dg-cell>
-            <clr-dg-cell>{{score}}</clr-dg-cell>
+            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
-        <clr-dg-footer>Updates every 30 minutes  &bull;  {{level1Names.length}} entries</clr-dg-footer>
+        <clr-dg-footer>Updates in real time  &bull;  {{level1Names.length}} entries</clr-dg-footer>
     </clr-datagrid>
     
-    <clr-datagrid [hidden]="!level2Display">
+    <clr-datagrid [hidden]="!level2Display" style="max-height:450px">
+        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+        
+        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
         <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column>Score</clr-dg-column>
+        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
     
         <clr-dg-row *ngFor="let score of level2Scores; let i = index" [attr.data-index]="i">
+            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
             <clr-dg-cell>{{level2Names[i]}}</clr-dg-cell>
-            <clr-dg-cell>{{score}}</clr-dg-cell>
+            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
-        <clr-dg-footer>Updates every 30 minutes  &bull;  {{level2Names.length}} entries</clr-dg-footer>
+        <clr-dg-footer>Updates in real time  &bull;  {{level2Names.length}} entries</clr-dg-footer>
     </clr-datagrid>
     
-    <clr-datagrid [hidden]="!level3Display">
+    <clr-datagrid [hidden]="!level3Display" style="max-height:450px">
+        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+        
+        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
         <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column>Score</clr-dg-column>
+        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
     
         <clr-dg-row *ngFor="let score of level3Scores; let i = index" [attr.data-index]="i">
+            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
             <clr-dg-cell>{{level3Names[i]}}</clr-dg-cell>
-            <clr-dg-cell>{{score}}</clr-dg-cell>
+            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
-        <clr-dg-footer>Updates every 30 minutes  &bull;  {{level3Names.length}} entries</clr-dg-footer>
+        <clr-dg-footer>Updates in real time  &bull;  {{level3Names.length}} entries</clr-dg-footer>
     </clr-datagrid>
     
-    <clr-datagrid [hidden]="!level4Display">
+    <clr-datagrid [hidden]="!level4Display" style="max-height:450px">
+        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+        
+        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
         <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column>Score</clr-dg-column>
+        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
     
         <clr-dg-row *ngFor="let score of level4Scores; let i = index" [attr.data-index]="i">
+            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
             <clr-dg-cell>{{level4Names[i]}}</clr-dg-cell>
-            <clr-dg-cell>{{score}}</clr-dg-cell>
+            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
-        <clr-dg-footer>Updates every 30 minutes  &bull;  {{level4Names.length}} entries</clr-dg-footer>
+        <clr-dg-footer>Updates in real time  &bull;  {{level4Names.length}} entries</clr-dg-footer>
     </clr-datagrid>
     
-    <clr-datagrid [hidden]="!level5Display">
+    <clr-datagrid [hidden]="!level5Display" style="max-height:450px">
+        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+        
+        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
         <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column>Score</clr-dg-column>
+        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
     
         <clr-dg-row *ngFor="let score of level5Scores; let i = index" [attr.data-index]="i">
+            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
             <clr-dg-cell>{{level5Names[i]}}</clr-dg-cell>
-            <clr-dg-cell>{{score}}</clr-dg-cell>
+            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
-        <clr-dg-footer>Updates every 30 minutes  &bull;  {{level5Names.length}} entries</clr-dg-footer>
+        <clr-dg-footer>Updates in real time  &bull;  {{level5Names.length}} entries</clr-dg-footer>
     </clr-datagrid>
 </div>

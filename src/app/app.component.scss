@@ -1,5 +1,5 @@
 clr-main-container {
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
   width: 100%;
   .header {
@@ -45,5 +45,15 @@ clr-main-container {
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+    clr-modal {
+      margin: 1rem;
+      .modal-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+    }
   }
 }

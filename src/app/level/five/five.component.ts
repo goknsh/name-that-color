@@ -6,7 +6,12 @@ import * as firebase from 'firebase/app';
 
 export interface response {
   five: number
-}
+};
+
+export interface leaderboard {
+  name: any,
+  scores: any
+};
 
 @Component({
   selector: 'app-five',
@@ -15,7 +20,7 @@ export interface response {
 })
 export class FiveComponent implements OnInit {
 
-  question; time; timer; countTime; checkAnswers; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerOptions = ["Red", "Yellow", "Blue", "Green"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user;
+  question; time; timer; countTime; checkAnswers; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerOptions = ["Red", "Yellow", "Blue", "Green"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardNames; leaderboardScores;
   
   constructor(
     public afAuth: AngularFireAuth,
@@ -26,6 +31,10 @@ export class FiveComponent implements OnInit {
         this.user = user; this.loggedIn = true;
         this.afs.collection('users').doc(user.uid).valueChanges().subscribe((data: response) => {
           this.highScore = data.five;
+          this.afs.collection('leaderboard').doc('five').valueChanges().subscribe((data: leaderboard) => {
+            this.leaderboardNames = data.name;
+            this.leaderboardScores = data.scores;
+          });
         });
       } else {
         this.loggedIn = false;
@@ -59,6 +68,16 @@ export class FiveComponent implements OnInit {
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
         }
+        let i = 0;
+        for (let score of this.leaderboardScores) {
+          if (this.score > score) {
+            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            break;
+          }
+          i++;
+        }
         this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
       } else {
         this.countTime = this.countTime - 1; this.time = ` — ${this.countTime}s`;
@@ -87,6 +106,16 @@ export class FiveComponent implements OnInit {
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
             }
+            let i = 0;
+            for (let score of this.leaderboardScores) {
+              if (this.score > score) {
+                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                break;
+              }
+              i++;
+            }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
             this.countTime = this.countTime - 1; this.time = ` — ${this.countTime}s`;
@@ -95,6 +124,16 @@ export class FiveComponent implements OnInit {
       } else {
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
+        }
+        let i = 0;
+        for (let score of this.leaderboardScores) {
+          if (this.score > score) {
+            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            break;
+          }
+          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
@@ -121,6 +160,16 @@ export class FiveComponent implements OnInit {
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
             }
+            let i = 0;
+            for (let score of this.leaderboardScores) {
+              if (this.score > score) {
+                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                break;
+              }
+              i++;
+            }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
             this.countTime = this.countTime - 1; this.time = ` — ${this.countTime}s`;
@@ -129,6 +178,16 @@ export class FiveComponent implements OnInit {
       } else {
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
+        }
+        let i = 0;
+        for (let score of this.leaderboardScores) {
+          if (this.score > score) {
+            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            break;
+          }
+          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
@@ -155,6 +214,16 @@ export class FiveComponent implements OnInit {
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
             }
+            let i = 0;
+            for (let score of this.leaderboardScores) {
+              if (this.score > score) {
+                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                break;
+              }
+              i++;
+            }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
             this.countTime = this.countTime - 1; this.time = ` — ${this.countTime}s`;
@@ -163,6 +232,16 @@ export class FiveComponent implements OnInit {
       } else {
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
+        }
+        let i = 0;
+        for (let score of this.leaderboardScores) {
+          if (this.score > score) {
+            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            break;
+          }
+          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
@@ -189,6 +268,16 @@ export class FiveComponent implements OnInit {
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
             }
+            let i = 0;
+            for (let score of this.leaderboardScores) {
+              if (this.score > score) {
+                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                break;
+              }
+              i++;
+            }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
             this.countTime = this.countTime - 1; this.time = ` — ${this.countTime}s`;
@@ -197,6 +286,16 @@ export class FiveComponent implements OnInit {
       } else {
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ five: this.score });
+        }
+        let i = 0;
+        for (let score of this.leaderboardScores) {
+          if (this.score > score) {
+            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
+            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            break;
+          }
+          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }

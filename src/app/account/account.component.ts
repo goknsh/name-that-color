@@ -30,7 +30,7 @@ export class AccountComponent implements OnInit {
       if (user !== null) {
         this.afs.collection('users').doc(user.uid).valueChanges().subscribe((data: response) => {
           if (data === null) {
-            this.afs.collection('users').doc(user.uid).set({ name: user.displayName, email: user.email, one: 0, two: 0, three: 0, four: 0, five: 0 });
+            this.afs.collection('users').doc(user.uid).set({ email: user.email, one: 0, two: 0, three: 0, four: 0, five: 0 });
             this.score.push(0); this.score.push(0); this.score.push(0); this.score.push(0); this.score.push(0);
           } else {
             this.score.push(data.one); this.score.push(data.two); this.score.push(data.three); this.score.push(data.four); this.score.push(data.five);

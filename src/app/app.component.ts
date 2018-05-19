@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'my-app',
@@ -8,9 +9,12 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
     
-    home = true;
+    home = true; newUser = false;
     
-    constructor(private router: Router) {
+    constructor(
+        private router: Router,
+        private _location: Location
+    ) {
         router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
                 if (event.urlAfterRedirects === "/") {
@@ -24,5 +28,9 @@ export class AppComponent implements OnInit {
     
     
     ngOnInit() {
+        if (localStorage.getItem("newUser") === null) {
+            this.newUser = true;
+            localStorage.setItem("newUser", "false")
+        }
     }
 }

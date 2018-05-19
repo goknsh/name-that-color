@@ -2,8 +2,8 @@
   <clr-header>
     
     <div class="branding">
-      <a href="/" routerLink="/" class="nav-link nav-icon" [hidden]="home">
-        <clr-icon shape="arrow left" size="32"></clr-icon>
+      <a href="/home" routerLink="/home" routerLinkActive="active" class="nav-link nav-icon">
+        <clr-icon shape="home" size="30"></clr-icon>
       </a>
       <a href="/settings" routerLink="/settings" routerLinkActive="active" class="nav-link nav-icon">
         <clr-icon shape="settings" size="32"></clr-icon>
@@ -26,6 +26,19 @@
   
   <div class="content-container">
     <router-outlet></router-outlet>
+    
+    <clr-modal [(clrModalOpen)]="newUser" [clrModalClosable]="false">
+      <h3 class="modal-title">Greetings, player!</h3>
+      <div class="modal-body">
+        <p><b>READ CAREFULLY</b>: this is the only time you will see this. I&rsquo;ve detected that this is the first time you are visiting this website. So, I&rsquo;m going to give you some suggestions. First thing you need to do is <a href="/account" routerLink="/account">get an account</a> &mdash; which&rsquo;ll allow you to save your high scores, and get on the leaderboards. Then, <a href="/about" routerLink="/about">learn about the game</a>; if you don&rsquo;t, you&rsquo;re not going to perform very well.</p>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-outline" (click)="newUser = false">No, I&rsquo;m good</a>
+        <a type="button" class="btn btn-primary" (click)="newUser = false" href="/about" routerLink="/about">Learn about game</a>
+        <a type="button" class="btn btn-primary" (click)="newUser = false" href="/account" routerLink="/account">Get account</a>
+      </div>
+    </clr-modal>
+    
   </div>
   
 </clr-main-container>

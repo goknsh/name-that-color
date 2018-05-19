@@ -22,6 +22,12 @@ import { ThreeComponent } from './level/three/three.component';
 import { FourComponent } from './level/four/four.component';
 import { FiveComponent } from './level/five/five.component';
 import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
+import { AboutLevelOneComponent } from './about/level/about-level-one/about-level-one.component';
+import { AboutLevelTwoComponent } from './about/level/about-level-two/about-level-two.component';
+import { AboutLevelThreeComponent } from './about/level/about-level-three/about-level-three.component';
+import { AboutLevelFourComponent } from './about/level/about-level-four/about-level-four.component';
+import { AboutLevelFiveComponent } from './about/level/about-level-five/about-level-five.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +41,13 @@ import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
         ThreeComponent,
         FourComponent,
         FiveComponent,
-        LeaderboardsComponent
+        LeaderboardsComponent,
+        AboutLevelOneComponent,
+        AboutLevelTwoComponent,
+        AboutLevelThreeComponent,
+        AboutLevelFourComponent,
+        AboutLevelFiveComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserAnimationsModule,

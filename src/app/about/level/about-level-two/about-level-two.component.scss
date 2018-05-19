@@ -1,0 +1,42 @@
+.level {
+    text-align: center;
+    .question {
+        margin: 0 0 15px 0;
+        h1 {
+            color: #0af;
+        }
+    }
+    .answers {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        .answer {
+            cursor: pointer;
+            h3 {
+                margin: 10px 0 0 0;
+                font-weight: 600;
+            }
+            &#red {
+                h3 {
+                    color: #f00;
+                }
+            } &#yellow {
+                h3 {
+                    color: #ff0;
+                }
+            } &#blue {
+                h3 {
+                    color: #0af;
+                }
+            } &#green {
+                h3 {
+                    color: #2eed2e;
+                }
+            }
+        }
+    }
+    a {
+        margin: 25px 0 0 0;
+    }
+}
