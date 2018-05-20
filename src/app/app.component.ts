@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
+import * from '../app.js';
 
 @Component({
     selector: 'my-app',
@@ -22,6 +23,13 @@ export class AppComponent implements OnInit {
                 } else {
                     this.home = false;
                 }
+                setTimeout( () => {
+                    gtag('config', 'UA-119583599-1', {
+                      'page_title': document.title,
+                      'page_location': window.location,
+                      'page_path': event.urlAfterRedirects,
+                    });
+                }, 300);
             }
         });
     }

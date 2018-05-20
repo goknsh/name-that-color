@@ -20,7 +20,7 @@ export interface leaderboard {
 })
 export class ThreeComponent implements OnInit {
 
-  question; time; timer; countTime; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardNames; leaderboardScores;
+  question; time; timer; countTime; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardScores = [ Infinity ]; leaderboardNames = [ Infinity ]; leaderboardModal = false; leaderboardPosition;
   
   constructor(
     public afAuth: AngularFireAuth,
@@ -69,7 +69,7 @@ export class ThreeComponent implements OnInit {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
             this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-            break;
+            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
         }
@@ -102,7 +102,7 @@ export class ThreeComponent implements OnInit {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
                 this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-                break;
+                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
             }
@@ -121,7 +121,7 @@ export class ThreeComponent implements OnInit {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
             this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-            break;
+            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
         }
@@ -151,7 +151,7 @@ export class ThreeComponent implements OnInit {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
                 this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-                break;
+                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
             }
@@ -170,7 +170,7 @@ export class ThreeComponent implements OnInit {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
             this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-            break;
+            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
         }
@@ -200,7 +200,7 @@ export class ThreeComponent implements OnInit {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
                 this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-                break;
+                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
             }
@@ -219,7 +219,7 @@ export class ThreeComponent implements OnInit {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
             this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-            break;
+            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
         }
@@ -249,7 +249,7 @@ export class ThreeComponent implements OnInit {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
                 this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-                break;
+                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
             }
@@ -268,7 +268,7 @@ export class ThreeComponent implements OnInit {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
             this.afs.collection('leaderboard').doc('three').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
-            break;
+            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
         }

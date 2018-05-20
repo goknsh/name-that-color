@@ -10,3 +10,13 @@
     <p class="previousScore">Previous Score: {{ previousScore }}</p>
     <p class="highScore" [hidden]="!loggedIn">High Score: {{ highScore }}</p>
 </div>
+<clr-modal [(clrModalOpen)]="leaderboardModal">
+    <h3 class="modal-title">Woohoo!</h3>
+    <div class="modal-body">
+        <p>I know the game just ended, but your score of {{ previousScore }} is now #{{ leaderboardPosition }} on the leaderboards. Well done!</p>
+    </div>
+    <div class="modal-footer">
+        <a type="button" class="btn btn-outline" href="/leaderboards/4" routerLink="/leaderboards/4" (click)="leaderboardModal = false">Leaderboards</a>
+        <a type="button" class="btn btn-primary" (click)="leaderboardModal = false">Ok</a>
+    </div>
+</clr-modal>

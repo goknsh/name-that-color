@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase/app';
 
 export interface response {
@@ -27,7 +27,8 @@ export class LeaderboardsComponent implements OnInit {
   constructor(
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     afAuth.authState.subscribe((user: firebase.User) => {
       this.afs.collection('leaderboard').doc('one').valueChanges().subscribe((data: response) => {
@@ -75,6 +76,49 @@ export class LeaderboardsComponent implements OnInit {
 
   ngOnInit() {
     document.title = "Leaderboards // Name that Color";
+    this.route.params.subscribe(params => {
+      if (params.id === "1") {
+        this.level1Display = true;
+        this.level2Display = false;
+        this.level3Display = false;
+        this.level4Display = false;
+        this.level5Display = false;
+        this.currentLevel = "Level 1 Leaderboards";
+        document.title = "Level One // Leaderboards // Name that Color";
+      } if (params.id === "2") {
+        this.level1Display = false;
+        this.level2Display = true;
+        this.level3Display = false;
+        this.level4Display = false;
+        this.level5Display = false;
+        this.currentLevel = "Level 2 Leaderboards";
+        document.title = "Level Two // Leaderboards // Name that Color";
+      } if (params.id === "3") {
+        this.level1Display = false;
+        this.level2Display = false;
+        this.level3Display = true;
+        this.level4Display = false;
+        this.level5Display = false;
+        this.currentLevel = "Level 3 Leaderboards";
+        document.title = "Level Three // Leaderboards // Name that Color";
+      } if (params.id === "4") {
+        this.level1Display = false;
+        this.level2Display = false;
+        this.level3Display = false;
+        this.level4Display = true;
+        this.level5Display = false;
+        this.currentLevel = "Level 4 Leaderboards";
+        document.title = "Level Four // Leaderboards // Name that Color";
+      } if (params.id === "5") {
+        this.level1Display = false;
+        this.level2Display = false;
+        this.level3Display = false;
+        this.level4Display = false;
+        this.level5Display = true;
+        this.currentLevel = "Level 5 Leaderboards";
+        document.title = "Level Five // Leaderboards // Name that Color";
+      }
+    });
   }
 
 }

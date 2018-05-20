@@ -5,11 +5,11 @@
             <clr-icon shape="caret down"></clr-icon>
         </button>
         <clr-dropdown-menu clrPosition="bottom" *clrIfOpen>
-            <button type="button" (click)="level1Display=true;level2Display=false;level3Display=false;level4Display=false;level5Display=false;currentLevel='Level 1 Leaderboards'" clrDropdownItem>Level 1 Leaderboards</button>
-            <button type="button" (click)="level1Display=false;level2Display=true;level3Display=false;level4Display=false;level5Display=false;currentLevel='Level 2 Leaderboards'" clrDropdownItem>Level 2 Leaderboards</button>
-            <button type="button" (click)="level1Display=false;level2Display=false;level3Display=true;level4Display=false;level5Display=false;currentLevel='Level 3 Leaderboards'" clrDropdownItem>Level 3 Leaderboards</button>
-            <button type="button" (click)="level1Display=false;level2Display=false;level3Display=false;level4Display=true;level5Display=false;currentLevel='Level 4 Leaderboards'" clrDropdownItem>Level 4 Leaderboards</button>
-            <button type="button" (click)="level1Display=false;level2Display=false;level3Display=false;level4Display=false;level5Display=true;currentLevel='Level 5 Leaderboards'" clrDropdownItem>Level 5 Leaderboards</button>
+            <a class="btn" href="/leaderboards/1" routerLink="/leaderboards/1" clrDropdownItem>Level 1 Leaderboards</a>
+            <a class="btn" href="/leaderboards/2" routerLink="/leaderboards/2" clrDropdownItem>Level 2 Leaderboards</a>
+            <a class="btn" href="/leaderboards/3" routerLink="/leaderboards/3" clrDropdownItem>Level 3 Leaderboards</a>
+            <a class="btn" href="/leaderboards/4" routerLink="/leaderboards/4" clrDropdownItem>Level 4 Leaderboards</a>
+            <a class="btn" href="/leaderboards/5" routerLink="/leaderboards/5" clrDropdownItem>Level 5 Leaderboards</a>
         </clr-dropdown-menu>
     </clr-dropdown>
     
