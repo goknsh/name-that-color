@@ -39,11 +39,7 @@ export class LeaderboardsComponent implements OnInit {
         } for (let score of data.scores) {
           this.level1Scores.push(score);
         } for (let id of data.id) {
-          if (id === user.uid) {
-            this.level1Ids.push(true);
-          } else {
-            this.level1Ids.push(false);
-          }
+          if (user === null) { this.level1Ids.push(false); } else { if (id === user.uid) { this.level1Ids.push(true); } else { this.level1Ids.push(false); } }
         }
       });
       this.afs.collection('leaderboard').doc('two').valueChanges().subscribe((data: response) => {
@@ -53,11 +49,7 @@ export class LeaderboardsComponent implements OnInit {
         } for (let score of data.scores) {
           this.level2Scores.push(score);
         } for (let id of data.id) {
-          if (id === user.uid) {
-            this.level2Ids.push(true);
-          } else {
-            this.level2Ids.push(false);
-          }
+          if (user === null) { this.level2Ids.push(false); } else { if (id === user.uid) { this.level2Ids.push(true); } else { this.level2Ids.push(false); } }
         }
       });
       this.afs.collection('leaderboard').doc('three').valueChanges().subscribe((data: response) => {
@@ -67,11 +59,7 @@ export class LeaderboardsComponent implements OnInit {
         } for (let score of data.scores) {
           this.level3Scores.push(score);
         } for (let id of data.id) {
-          if (id === user.uid) {
-            this.level3Ids.push(true);
-          } else {
-            this.level3Ids.push(false);
-          }
+          if (user === null) { this.level3Ids.push(false); } else { if (id === user.uid) { this.level3Ids.push(true); } else { this.level3Ids.push(false); } }
         }
       });
       this.afs.collection('leaderboard').doc('four').valueChanges().subscribe((data: response) => {
@@ -81,11 +69,7 @@ export class LeaderboardsComponent implements OnInit {
         } for (let score of data.scores) {
           this.level4Scores.push(score);
         } for (let id of data.id) {
-          if (id === user.uid) {
-            this.level4Ids.push(true);
-          } else {
-            this.level4Ids.push(false);
-          }
+          if (user === null) { this.level4Ids.push(false); } else { if (id === user.uid) { this.level4Ids.push(true); } else { this.level4Ids.push(false); } }
         }
       });
       this.afs.collection('leaderboard').doc('five').valueChanges().subscribe((data: response) => {
@@ -95,11 +79,7 @@ export class LeaderboardsComponent implements OnInit {
         } for (let score of data.scores) {
           this.level5Scores.push(score);
         } for (let id of data.id) {
-          if (id === user.uid) {
-            this.level5Ids.push(true);
-          } else {
-            this.level5Ids.push(false);
-          }
+          if (user === null) { this.level5Ids.push(false); } else { if (id === user.uid) { this.level5Ids.push(true); } else { this.level5Ids.push(false); } }
         }
       });
     });
