@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
-import { Gtag } from 'angular-gtag';
 
 @Component({
     selector: 'my-app',
@@ -14,8 +13,7 @@ export class AppComponent implements OnInit {
     
     constructor(
         private router: Router,
-        private _location: Location,
-        gtag: Gtag
+        private _location: Location
     ) {
         router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
@@ -24,12 +22,6 @@ export class AppComponent implements OnInit {
                 } else {
                     this.home = false;
                 }
-                setTimeout( () => {
-                    gtag.pageview({ 
-                        page_title: document.title,
-                        page_path: event.urlAfterRedirects
-                    });
-                }, 300);
             }
         });
     }

@@ -6,3 +6,11 @@ window.addEventListener('devtoolschange', function (e) {
         window.location.reload();
     }
 });
+
+document.getElementsByTagName('title')[0].addEventListener('DOMSubtreeModified', function (e) {
+    gtag('config', 'UA-119583599-1', {
+        'page_title': document.title,
+        'page_path': window.location.pathname,
+        'page_location': window.location.href
+    });
+}, false);

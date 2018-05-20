@@ -25,7 +25,6 @@
     "@clr/icons": "^0.11.0",
     "@clr/ui": "^0.11.0",
     "@webcomponents/custom-elements": "1.0.0",
-    "angular-gtag": "^1.0.2",
     "angularfire2": "5.0.0-rc.4",
     "cordova-android": "^7.0.0",
     "cordova-browser": "^5.0.3",
