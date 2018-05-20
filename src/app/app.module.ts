@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
-import { AppComponent } from './app.component';
+import { GtagModule } from 'angular-gtag';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule } from 'angularfire2';
@@ -12,6 +12,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { ROUTING } from "./app.routing";
+import { AppComponent } from './app.component';
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { SettingsComponent } from './settings/settings.component';
@@ -58,6 +59,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
         AngularFireModule.initializeApp(environment.firebase, 'my-app'),
         AngularFirestoreModule.enablePersistence(),
         AngularFireAuthModule,
+        GtagModule.forRoot({ trackingId: 'UA-119583599-1', trackPageviews: true }),
         ROUTING
     ],
     providers: [],
