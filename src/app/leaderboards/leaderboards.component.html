@@ -22,7 +22,7 @@
     
         <clr-dg-row *ngFor="let score of level1Scores; let i = index" [attr.data-index]="i">
             <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level1Names[i]}}</clr-dg-cell>
+            <clr-dg-cell>{{level1Names[i]}} <span class="you-{{level1Ids[i]}}">(You)</span></clr-dg-cell>
             <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
@@ -38,7 +38,7 @@
     
         <clr-dg-row *ngFor="let score of level2Scores; let i = index" [attr.data-index]="i">
             <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level2Names[i]}}</clr-dg-cell>
+            <clr-dg-cell>{{level2Names[i]}} <span class="you-{{level2Ids[i]}}">(You)</span></clr-dg-cell>
             <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
@@ -54,7 +54,7 @@
     
         <clr-dg-row *ngFor="let score of level3Scores; let i = index" [attr.data-index]="i">
             <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level3Names[i]}}</clr-dg-cell>
+            <clr-dg-cell>{{level3Names[i]}} <span class="you-{{level3Ids[i]}}">(You)</span></clr-dg-cell>
             <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
@@ -70,7 +70,7 @@
     
         <clr-dg-row *ngFor="let score of level4Scores; let i = index" [attr.data-index]="i">
             <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level4Names[i]}}</clr-dg-cell>
+            <clr-dg-cell>{{level4Names[i]}} <span class="you-{{level4Ids[i]}}">(You)</span></clr-dg-cell>
             <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     
@@ -86,7 +86,7 @@
     
         <clr-dg-row *ngFor="let score of level5Scores; let i = index" [attr.data-index]="i">
             <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level5Names[i]}}</clr-dg-cell>
+            <clr-dg-cell>{{level5Names[i]}} <span class="you-{{level5Ids[i]}}">(You)</span></clr-dg-cell>
             <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
         </clr-dg-row>
     

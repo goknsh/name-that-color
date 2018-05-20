@@ -10,7 +10,8 @@ export interface response {
 
 export interface leaderboard {
   name: any,
-  scores: any
+  scores: any,
+  id: any
 };
 
 @Component({
@@ -20,7 +21,7 @@ export interface leaderboard {
 })
 export class FiveComponent implements OnInit {
 
-  question; time; timer; countTime; checkAnswers; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerOptions = ["Red", "Yellow", "Blue", "Green"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardScores = [ Infinity ]; leaderboardNames = [ Infinity ]; leaderboardModal = false; leaderboardPosition;
+  question; time; timer; countTime; checkAnswers; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerOptions = ["Red", "Yellow", "Blue", "Green"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardScores = [ Infinity ]; leaderboardNames; leaderboardIds; leaderboardModal = false; leaderboardPosition;
   
   constructor(
     public afAuth: AngularFireAuth,
@@ -34,6 +35,7 @@ export class FiveComponent implements OnInit {
           this.afs.collection('leaderboard').doc('five').valueChanges().subscribe((data: leaderboard) => {
             this.leaderboardNames = data.name;
             this.leaderboardScores = data.scores;
+            this.leaderboardIds = data.id;
           });
         });
       } else {
@@ -73,7 +75,8 @@ export class FiveComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -111,7 +114,8 @@ export class FiveComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -130,7 +134,8 @@ export class FiveComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -138,6 +143,7 @@ export class FiveComponent implements OnInit {
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
     });
+    
     document.getElementById("yellow").addEventListener("click", () => {
       clearInterval(this.timer);
       if (this.checkAnswers === this.answerOptions[1]) {
@@ -165,7 +171,8 @@ export class FiveComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -184,7 +191,8 @@ export class FiveComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -192,6 +200,7 @@ export class FiveComponent implements OnInit {
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
     });
+    
     document.getElementById("blue").addEventListener("click", () => {
       clearInterval(this.timer);
       if (this.checkAnswers === this.answerOptions[2]) {
@@ -219,7 +228,8 @@ export class FiveComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -238,7 +248,8 @@ export class FiveComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -246,6 +257,7 @@ export class FiveComponent implements OnInit {
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
     });
+    
     document.getElementById("green").addEventListener("click", () => {
       clearInterval(this.timer);
       if (this.checkAnswers === this.answerOptions[3]) {
@@ -273,7 +285,8 @@ export class FiveComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -292,7 +305,8 @@ export class FiveComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('five').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;

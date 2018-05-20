@@ -25,6 +25,7 @@ clr-main-container {
     .header-actions {
       .nav-icon {
         transition: 300ms ease-in-out opacity;
+        width: 1.8rem;
         clr-icon {
           fill: #adbbc4;
         }

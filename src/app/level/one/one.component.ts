@@ -10,7 +10,8 @@ export interface response {
 
 export interface leaderboard {
   name: any,
-  scores: any
+  scores: any,
+  id: any
 };
 
 @Component({
@@ -20,17 +21,12 @@ export interface leaderboard {
 })
 export class OneComponent implements OnInit {
 
-  question; time; timer; countTime; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardScores = [ Infinity ]; leaderboardNames = [ Infinity ]; leaderboardModal = false; leaderboardPosition;
+  question; time; timer; countTime; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardScores = [ Infinity ]; leaderboardNames; leaderboardIds; leaderboardModal = false; leaderboardPosition;
   
   constructor(
     public afAuth: AngularFireAuth,
     public afs: AngularFirestore
     ) {
-  }
-
-  ngOnInit() {
-    document.title = "Level One // Name that Color";
-    this.question = "Level One"; this.buttonText = "Start Game";
     this.afAuth.authState.subscribe((user: firebase.User) => {
       if (user !== null) {
         this.user = user; this.loggedIn = true;
@@ -39,12 +35,18 @@ export class OneComponent implements OnInit {
           this.afs.collection('leaderboard').doc('one').valueChanges().subscribe((data: leaderboard) => {
             this.leaderboardNames = data.name;
             this.leaderboardScores = data.scores;
+            this.leaderboardIds = data.id;
           });
         });
       } else {
         this.loggedIn = false;
       }
     });
+  }
+
+  ngOnInit() {
+    document.title = "Level One // Name that Color";
+    this.question = "Level One"; this.buttonText = "Start Game";
   }
   
   play() {
@@ -64,7 +66,8 @@ export class OneComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -93,7 +96,8 @@ export class OneComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -112,7 +116,8 @@ export class OneComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -139,7 +144,8 @@ export class OneComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -158,7 +164,8 @@ export class OneComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -185,7 +192,8 @@ export class OneComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -204,7 +212,8 @@ export class OneComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
@@ -231,7 +240,8 @@ export class OneComponent implements OnInit {
               if (this.score > score) {
                 this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
                 this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+                this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
                 this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
               }
               i++;
@@ -250,7 +260,8 @@ export class OneComponent implements OnInit {
           if (this.score > score) {
             this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
             this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores });
+            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
+            this.afs.collection('leaderboard').doc('one').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
             this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
           }
           i++;
