@@ -1,0 +1,8 @@
+[build]
+  command = "ng build --prod --aot"
+  publish = "dist"
+  NODE_ENV = "8.11.1"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"

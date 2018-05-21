@@ -7,10 +7,20 @@ window.addEventListener('devtoolschange', function (e) {
     }
 });
 
+let timer;
 document.getElementsByTagName('title')[0].addEventListener('DOMSubtreeModified', function (e) {
+    if (timer !== undefined) { clearInterval(timer); }
     gtag('config', 'UA-119583599-1', {
         'page_title': document.title,
         'page_path': window.location.pathname,
         'page_location': window.location.href
     });
+    timer = setInterval( () => {
+        gtag('config', 'UA-119583599-1', {
+            'page_title': document.title,
+            'page_path': window.location.pathname,
+            'page_location': window.location.href
+        });
+    }, 1000);
+    (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-3568052574975941", enable_page_level_ads: true });
 }, false);
