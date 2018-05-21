@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
+import { MetaModule } from 'ng2-meta';
 import { environment } from '../environments/environment';
 
 import { AngularFireModule } from 'angularfire2';
@@ -62,6 +63,7 @@ import { ChangelogComponent } from './changelog/changelog.component';
         AngularFireModule.initializeApp(environment.firebase, 'my-app'),
         AngularFirestoreModule.enablePersistence(),
         AngularFireAuthModule,
+        MetaModule.forRoot(),
         ROUTING
     ],
     providers: [],

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { MetaService } from 'ng2-meta';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit {
     constructor(
         private router: Router,
         private _location: Location,
-        public afAuth: AngularFireAuth
+        public afAuth: AngularFireAuth,
+        private metaService: MetaService
     ) {
         router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
