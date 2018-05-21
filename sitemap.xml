@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> 
+  <url>
+    <loc>https://ntc.knsh.red/home</loc>
+    <description>Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/settings</loc>
+    <description>Customize Name that Color to suit your needs. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/about</loc>
+    <description>Learn everything about our multiple levels and become a pro at Name that Color. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/about/level/1</loc>
+    <description>Learn everything about level one and get your name on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/about/level/2</loc>
+    <description>Learn everything about level two and get your name on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/about/level/3</loc>
+    <description>Learn everything about level three and get your name on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/about/level/4</loc>
+    <description>Learn everything about level four and get your name on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/about/level/5</loc>
+    <description>Learn everything about level five and get your name on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/leaderboards</loc>
+    <description>View the pros in each level of Name that Color, and see if you can beat them. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/leaderboards/1</loc>
+    <description>Check out the pros of level one, and see if you can beat them. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/leaderboards/2</loc>
+    <description>Check out the pros of level two, and see if you can beat them. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/leaderboards/3</loc>
+    <description>Check out the pros of level three, and see if you can beat them. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/leaderboards/4</loc>
+    <description>Check out the pros of level four, and see if you can beat them. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/leaderboards/5</loc>
+    <description>Check out the pros of level five, and see if you can beat them. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/account</loc>
+    <description>Get an account on Name that Color, and see if you can get on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/level/1</loc>
+    <description>Start off easy, play level one, and see if you can get on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/level/2</loc>
+    <description>This is not very hard, play level two, and see if you can get on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/level/3</loc>
+    <description>Slightly harder, play level three, and see if you can get on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/level/4</loc>
+    <description>Okay now we are talking! Play level four, and see if you can get on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/level/5</loc>
+    <description>Can you do it? Play level five, and see if you can get on the leaderboards. Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes</description>
+    <priority>0.7</priority>
+  </url>
+</urlset>
