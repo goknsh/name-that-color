@@ -1,5 +1,11 @@
 .hero {
     width: 100%;
+    .level {
+        margin-bottom: 1.5rem;
+        &:last-child {
+            margin: 0;
+        }
+    }
     h3 {
         font-weight: 700;
         font-size: 1.1rem;

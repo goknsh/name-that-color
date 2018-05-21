@@ -8,7 +8,8 @@
     </div>
     <button class="btn btn-primary" (click)="play()" [disabled]="buttonDisabled">{{ buttonText }}{{ score }}</button>
     <p class="previousScore">Previous Score: {{ previousScore }}</p>
-    <p class="highScore" [hidden]="!loggedIn">High Score: {{ highScore }}</p>
+    <p class="highScore" [hidden]="!loggedIn">Your High Score: {{ highScore }}</p>
+    <p class="highScore" [hidden]="loggedIn"><a href="/account" routerLink="/account">Get an account</a> to record your high scores and be on the leaderboard</p>
 </div>
 <clr-modal [(clrModalOpen)]="leaderboardModal">
     <h3 class="modal-title">Woohoo!</h3>

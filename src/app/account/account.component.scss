@@ -1,6 +1,29 @@
 .hero {
     text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    .account-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+        }
+        h1 {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-left: 10px;
+        }
+    }
     a {
         margin-top: 15px;
+    }
+    h4 {
+        margin: 1rem 0;
+    }
+    p {
+        margin: 1rem 0 .75rem 0;
     }
 }

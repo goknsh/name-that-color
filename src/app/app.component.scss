@@ -29,6 +29,15 @@ clr-main-container {
         clr-icon {
           fill: #adbbc4;
         }
+        div {
+          padding-left: 8px;
+          img {
+            width: 30px;
+            height: 30px;
+            opacity: 1;
+            border-radius: 100%;
+          }
+        }
         &.active {
           background: transparent;
           opacity: 1;
@@ -45,12 +54,15 @@ clr-main-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 1rem;
     max-width: 400px;
+    padding: 0 0.5rem 0 1rem;
     margin: 0 auto;
     .outlet {
-      max-height: 600px;
+      max-height: 550px;
       overflow: auto;
+      width: 100%;
+      max-width: 400px;
+      padding-right: 0.5rem;
     }
     clr-modal {
       margin: 1rem;
@@ -60,5 +72,17 @@ clr-main-container {
         line-height: 1.3;
       }
     }
+  }
+}
+
+@media screen and (max-height: 620px) {
+  .outlet {
+    max-height: 400px !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main-container .header .branding {
+    max-width: 100%;
   }
 }

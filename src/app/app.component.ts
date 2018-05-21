@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
+import * as firebase from 'firebase/app';
 
 @Component({
     selector: 'my-app',
@@ -13,7 +17,8 @@ export class AppComponent implements OnInit {
     
     constructor(
         private router: Router,
-        private _location: Location
+        private _location: Location,
+        public afAuth: AngularFireAuth
     ) {
         router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {
@@ -23,6 +28,9 @@ export class AppComponent implements OnInit {
                     this.home = false;
                 }
             }
+        });
+        afAuth.authState.subscribe((user: firebase.User) => {
+            
         });
     }
     
