@@ -27,6 +27,7 @@ export class AccountComponent implements OnInit {
     public afs: AngularFirestore
     ) {
     afAuth.authState.subscribe((user: firebase.User) => {
+      console.log(user);
       if (user !== null) {
         this.afs.collection('users').doc(user.uid).valueChanges().subscribe((data: response) => {
           if (data === null) {

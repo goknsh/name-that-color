@@ -2,15 +2,18 @@
     <div *ngIf="afAuth.authState | async as user; else showLogin">
         <div class="account-header">
             <img [src]="user.photoURL">
-            <h1>{{ user.displayName }}</h1>
+            <div class="user-info">
+                <h1>{{ user.displayName }}</h1>
+                <p>{{ user.email }}</p>
+            </div>
         </div>
         <h4>Level 1 High Score: {{ score[0] }}
         <br>Level 2 High Score: {{ score[1] }}
         <br>Level 3 High Score: {{ score[2] }}
         <br>Level 4 High Score: {{ score[3] }}
-        <br>Level 5 High Score: {{ score[4] }}</h4>
+        <br>Level 5 High Score: {{ score[4] }}
         <a href="/leaderboards" routerLink="/leaderboards" class="btn btn-outline">Leaderboards</a>
-        <a class="btn btn-primary" (click)="logout()">Logout</a>
+        <a class="btn btn-primary" (click)="logout()">Logout</a></h4>
     </div>
     <ng-template #showLogin>
         <h1>Login</h1>
