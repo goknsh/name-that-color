@@ -11,11 +11,14 @@
       <a href="/about" routerLink="/about" routerLinkActive="active" class="nav-link nav-icon">
         <clr-icon shape="help" size="32"></clr-icon>
       </a>
+      <a href="/changelog" routerLink="/changelog" routerLinkActive="active" class="nav-link nav-icon">
+        <clr-icon shape="tags" size="32"></clr-icon>
+      </a>
     </div>
     
     <div class="header-actions">
       <a href="/leaderboards" routerLink="/leaderboards" routerLinkActive="active" class="nav-link nav-icon">
-        <clr-icon shape="view-list" size="32"></clr-icon>
+        <clr-icon shape="line-chart" size="34"></clr-icon>
       </a>
       <a href="/account" routerLink="/account" routerLinkActive="active" class="nav-link nav-icon">
         <clr-icon shape="login" size="32"></clr-icon>
@@ -25,7 +28,9 @@
   </clr-header>
   
   <div class="content-container">
-    <router-outlet></router-outlet>
+    <div class="outlet">
+      <router-outlet></router-outlet>
+    </div>
     
     <clr-modal [(clrModalOpen)]="newUser" [clrModalClosable]="false">
       <h3 class="modal-title">Greetings, player!</h3>

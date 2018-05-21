@@ -60,7 +60,7 @@ export class ThreeComponent implements OnInit {
       [this.answerColors[i], this.answerColors[j]] = [this.answerColors[j], this.answerColors[i]];
     }
     
-    this.countTime = 3; this.time = ` — ${this.countTime}s`;
+    this.countTime = 2; this.time = ` — ${this.countTime}s`;
     this.timer = setInterval(() => {
       if (this.countTime === 1) {
         if (this.score > this.highScore) {
@@ -94,7 +94,7 @@ export class ThreeComponent implements OnInit {
           [this.answerColors[i], this.answerColors[j]] = [this.answerColors[j], this.answerColors[i]];
         }
         
-        this.countTime = 3; this.time = ` — ${this.countTime}s`;
+        this.countTime = 2; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {
@@ -146,7 +146,7 @@ export class ThreeComponent implements OnInit {
           [this.answerColors[i], this.answerColors[j]] = [this.answerColors[j], this.answerColors[i]];
         }
         
-        this.countTime = 3; this.time = ` — ${this.countTime}s`;
+        this.countTime = 2; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {
@@ -198,7 +198,7 @@ export class ThreeComponent implements OnInit {
           [this.answerColors[i], this.answerColors[j]] = [this.answerColors[j], this.answerColors[i]];
         }
         
-        this.countTime = 3; this.time = ` — ${this.countTime}s`;
+        this.countTime = 2; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {
@@ -250,7 +250,7 @@ export class ThreeComponent implements OnInit {
           [this.answerColors[i], this.answerColors[j]] = [this.answerColors[j], this.answerColors[i]];
         }
         
-        this.countTime = 3; this.time = ` — ${this.countTime}s`;
+        this.countTime = 2; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {

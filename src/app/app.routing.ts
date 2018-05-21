@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { ChangelogComponent } from './changelog/changelog.component';
 import { AccountComponent } from './account/account.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
@@ -22,6 +24,8 @@ export const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutComponent },
+    { path: 'feedback', component: FeedbackComponent },
+    { path: 'changelog', component: ChangelogComponent },
     { path: 'about/level', redirectTo: 'about', pathMatch: 'full' },
     { path: 'about/level/1', component: AboutLevelOneComponent },
     { path: 'about/level/2', component: AboutLevelTwoComponent },

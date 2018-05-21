@@ -48,6 +48,10 @@ clr-main-container {
     padding: 0 1rem;
     max-width: 400px;
     margin: 0 auto;
+    .outlet {
+      max-height: 600px;
+      overflow: auto;
+    }
     clr-modal {
       margin: 1rem;
       .modal-title {

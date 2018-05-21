@@ -28,6 +28,8 @@ import { AboutLevelThreeComponent } from './about/level/about-level-three/about-
 import { AboutLevelFourComponent } from './about/level/about-level-four/about-level-four.component';
 import { AboutLevelFiveComponent } from './about/level/about-level-five/about-level-five.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { ChangelogComponent } from './changelog/changelog.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +49,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
         AboutLevelThreeComponent,
         AboutLevelFourComponent,
         AboutLevelFiveComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        FeedbackComponent,
+        ChangelogComponent
     ],
     imports: [
         BrowserAnimationsModule,

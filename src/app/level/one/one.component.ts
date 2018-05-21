@@ -55,7 +55,7 @@ export class OneComponent implements OnInit {
     this.question = this.questionOptions[Math.floor(Math.random() * Math.floor(4))];
     this.color = this.colorOptions[Math.floor(Math.random() * Math.floor(4))];
     
-    this.countTime = 5; this.time = ` — ${this.countTime}s`;
+    this.countTime = 3; this.time = ` — ${this.countTime}s`;
     this.timer = setInterval(() => {
       if (this.countTime === 1) {
         if (this.score > this.highScore) {
@@ -85,7 +85,7 @@ export class OneComponent implements OnInit {
         this.question = this.questionOptions[Math.floor(Math.random() * Math.floor(4))];
         this.color = this.colorOptions[Math.floor(Math.random() * Math.floor(4))];
         
-        this.countTime = 5; this.time = ` — ${this.countTime}s`;
+        this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {
@@ -133,7 +133,7 @@ export class OneComponent implements OnInit {
         this.question = this.questionOptions[Math.floor(Math.random() * Math.floor(4))];
         this.color = this.colorOptions[Math.floor(Math.random() * Math.floor(4))];
         
-        this.countTime = 5; this.time = ` — ${this.countTime}s`;
+        this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {
@@ -181,7 +181,7 @@ export class OneComponent implements OnInit {
         this.question = this.questionOptions[Math.floor(Math.random() * Math.floor(4))];
         this.color = this.colorOptions[Math.floor(Math.random() * Math.floor(4))];
         
-        this.countTime = 5; this.time = ` — ${this.countTime}s`;
+        this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {
@@ -229,7 +229,7 @@ export class OneComponent implements OnInit {
         this.question = this.questionOptions[Math.floor(Math.random() * Math.floor(4))];
         this.color = this.colorOptions[Math.floor(Math.random() * Math.floor(4))];
         
-        this.countTime = 5; this.time = ` — ${this.countTime}s`;
+        this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
             if (this.score > this.highScore) {
