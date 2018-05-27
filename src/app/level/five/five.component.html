@@ -8,16 +8,6 @@
     </div>
     <button class="btn btn-primary" (click)="play()" [disabled]="buttonDisabled">{{ buttonText }}{{ score }}</button>
     <p class="previousScore">Previous Score: {{ previousScore }}</p>
-    <p class="highScore" [hidden]="!loggedIn">Your High Score: {{ highScore }}</p>
+    <p class="highScore" [hidden]="!loggedIn">Your High Score: {{ highScore }}<br>{{ showCr }} clicks/sec</p>
     <p class="highScore" [hidden]="loggedIn"><a href="/account" routerLink="/account">Get an account</a> to record your high scores and be on the leaderboard</p>
 </div>
-<clr-modal [(clrModalOpen)]="leaderboardModal">
-    <h3 class="modal-title">Woohoo!</h3>
-    <div class="modal-body">
-        <p>I know the game just ended, but your score of {{ previousScore }} is now #{{ leaderboardPosition }} on the leaderboards. Well done!</p>
-    </div>
-    <div class="modal-footer">
-        <a type="button" class="btn btn-outline" href="/leaderboards/5" routerLink="/leaderboards/5" (click)="leaderboardModal = false">Leaderboards</a>
-        <a type="button" class="btn btn-primary" (click)="leaderboardModal = false">Ok</a>
-    </div>
-</clr-modal>

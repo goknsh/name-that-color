@@ -31,6 +31,8 @@ import { AboutLevelFiveComponent } from './about/level/about-level-five/about-le
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ChangelogComponent } from './changelog/changelog.component';
+import { TosComponent } from './tos/tos.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
     declarations: [
@@ -52,7 +54,9 @@ import { ChangelogComponent } from './changelog/changelog.component';
         AboutLevelFiveComponent,
         NotFoundComponent,
         FeedbackComponent,
-        ChangelogComponent
+        ChangelogComponent,
+        TosComponent,
+        PrivacyComponent
     ],
     imports: [
         BrowserAnimationsModule,

@@ -8,6 +8,8 @@ import { AboutComponent } from './about/about.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { ChangelogComponent } from './changelog/changelog.component';
 import { AccountComponent } from './account/account.component';
+import { TosComponent } from './tos/tos.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
 import { OneComponent } from './level/one/one.component';
@@ -36,11 +38,13 @@ export const ROUTES: Routes = [
     { path: 'login', redirectTo: 'account', pathMatch: 'full' },
     { path: 'signup', redirectTo: 'account', pathMatch: 'full' },
     { path: 'account', component: AccountComponent, canActivate: [MetaGuard], data: { meta: { title: 'Account // Name that Color', description: 'Get an account on Name that Color, and see if you can get on the leaderboards // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },
+    { path: 'tos', component: TosComponent, canActivate: [MetaGuard], data: { meta: { title: 'Terms of Service // Name that Color', description: 'View Name that Color\'s terms of service // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },
+    { path: 'privacy', component: PrivacyComponent, canActivate: [MetaGuard], data: { meta: { title: 'Privacy Policy // Name that Color', description: 'View Name that Color\'s privacy policy // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },
     { path: 'setting', redirectTo: 'settings', pathMatch: 'full' },
     { path: 'settings', component: SettingsComponent, canActivate: [MetaGuard], data: { meta: { title: 'Settings // Name that Color', description: 'Customize Name that Color to suit your needs // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },
     { path: 'leaderboard', redirectTo: 'leaderboards', pathMatch: 'full' },
-    { path: 'leaderboards', redirectTo: 'leaderboards/1', pathMatch: 'full' },
-    { path: 'leaderboards/:id', component: LeaderboardsComponent, canActivate: [MetaGuard], data: { meta: { title: 'Leaderboards // Name that Color', description: 'View the pros in each level of Name that Color, and see if you can beat them // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },
+    { path: 'leaderboards', redirectTo: 'leaderboards/scores/1', pathMatch: 'full' },
+    { path: 'leaderboards/:type/:id', component: LeaderboardsComponent, canActivate: [MetaGuard], data: { meta: { title: 'Leaderboards // Name that Color', description: 'View the pros in each level of Name that Color, and see if you can beat them // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },
     { path: 'level', redirectTo: 'home', pathMatch: 'full' },
     { path: 'level/1', component: OneComponent, canActivate: [MetaGuard], data: { meta: { title: 'Level One // Name that Color', description: '3 seconds to answer, no position changes, options are colored in, and are blocks, play level one, and see if you can get on the leaderboards // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },
     { path: 'level/2', component: TwoComponent, canActivate: [MetaGuard], data: { meta: { title: 'Level Two // Name that Color', description: '3 seconds to answer, no position changes, options are colored in, and are text, play level two, and see if you can get on the leaderboards // Name that Color is a simple, yet addictive game with multiple levels, custom games and multiplayer modes' } } },

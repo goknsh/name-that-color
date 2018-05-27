@@ -1,95 +1,205 @@
 <div class="hero">
-    <clr-dropdown>
-        <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
-            {{ currentLevel }}
-            <clr-icon shape="caret down"></clr-icon>
-        </button>
-        <clr-dropdown-menu clrPosition="bottom" *clrIfOpen>
-            <a class="btn" href="/leaderboards/1" routerLink="/leaderboards/1" clrDropdownItem>Level 1 Leaderboards</a>
-            <a class="btn" href="/leaderboards/2" routerLink="/leaderboards/2" clrDropdownItem>Level 2 Leaderboards</a>
-            <a class="btn" href="/leaderboards/3" routerLink="/leaderboards/3" clrDropdownItem>Level 3 Leaderboards</a>
-            <a class="btn" href="/leaderboards/4" routerLink="/leaderboards/4" clrDropdownItem>Level 4 Leaderboards</a>
-            <a class="btn" href="/leaderboards/5" routerLink="/leaderboards/5" clrDropdownItem>Level 5 Leaderboards</a>
-        </clr-dropdown-menu>
-    </clr-dropdown>
+    <div class="btn-group">
+        <a class="radio btn" href="/leaderboards/scores/{{currentLevel}}" routerLink="/leaderboards/scores/{{currentLevel}}">
+            <input type="radio" name="leaderboards" id="leaderboards-scores" [checked]="!clickRate">
+            <label for="leaderboards-scores">Score</label>
+        </a>
+        <a class="radio btn" href="/leaderboards/rate/{{currentLevel}}" routerLink="/leaderboards/rate/{{currentLevel}}">
+            <input type="radio" name="leaderboards" id="leaderboards-cr" [checked]="clickRate">
+            <label for="leaderboards-cr">Click Rate</label>
+        </a>
+    </div>
     
-    <clr-datagrid [hidden]="!level1Display" style="max-height:450px">
-        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+    <div class="scores" [hidden]="clickRate">
+        <clr-dropdown>
+            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                Level {{ currentLevel }}
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu clrPosition="bottom" *clrIfOpen>
+                <a class="btn" href="/leaderboards/scores/1" routerLink="/leaderboards/scores/1" clrDropdownItem>Level 1</a>
+                <a class="btn" href="/leaderboards/scores/2" routerLink="/leaderboards/scores/2" clrDropdownItem>Level 2</a>
+                <a class="btn" href="/leaderboards/scores/3" routerLink="/leaderboards/scores/3" clrDropdownItem>Level 3</a>
+                <a class="btn" href="/leaderboards/scores/4" routerLink="/leaderboards/scores/4" clrDropdownItem>Level 4</a>
+                <a class="btn" href="/leaderboards/scores/5" routerLink="/leaderboards/scores/5" clrDropdownItem>Level 5</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
         
-        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
-        <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
-    
-        <clr-dg-row *ngFor="let score of level1Scores; let i = index" [attr.data-index]="i">
-            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level1Names[i]}} <span class="you-{{level1Ids[i]}}">(You)</span></clr-dg-cell>
-            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
-        </clr-dg-row>
-    
-        <clr-dg-footer>Updates in real time  &bull;  {{level1Names.length}} entries</clr-dg-footer>
-    </clr-datagrid>
-    
-    <clr-datagrid [hidden]="!level2Display" style="max-height:450px">
-        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+        <clr-datagrid [hidden]="!level1Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
         
-        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
-        <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column style="min-width:80px;width:80px;padding-right:1rem">Score</clr-dg-column>
-    
-        <clr-dg-row *ngFor="let score of level2Scores; let i = index" [attr.data-index]="i">
-            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level2Names[i]}} <span class="you-{{level2Ids[i]}}">(You)</span></clr-dg-cell>
-            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
-        </clr-dg-row>
-    
-        <clr-dg-footer>Updates in real time  &bull;  {{level2Names.length}} entries</clr-dg-footer>
-    </clr-datagrid>
-    
-    <clr-datagrid [hidden]="!level3Display" style="max-height:450px">
-        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            <clr-dg-row *ngFor="let score of level1Scores; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level1Names[i]}} <span class="you-{{level1Ids[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
         
-        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
-        <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
-    
-        <clr-dg-row *ngFor="let score of level3Scores; let i = index" [attr.data-index]="i">
-            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level3Names[i]}} <span class="you-{{level3Ids[i]}}">(You)</span></clr-dg-cell>
-            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
-        </clr-dg-row>
-    
-        <clr-dg-footer>Updates in real time  &bull;  {{level3Names.length}} entries</clr-dg-footer>
-    </clr-datagrid>
-    
-    <clr-datagrid [hidden]="!level4Display" style="max-height:450px">
-        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            <clr-dg-footer>Updates in real time  &bull;  {{level1Names.length}} entries</clr-dg-footer>
+        </clr-datagrid>
         
-        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
-        <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
-    
-        <clr-dg-row *ngFor="let score of level4Scores; let i = index" [attr.data-index]="i">
-            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level4Names[i]}} <span class="you-{{level4Ids[i]}}">(You)</span></clr-dg-cell>
-            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
-        </clr-dg-row>
-    
-        <clr-dg-footer>Updates in real time  &bull;  {{level4Names.length}} entries</clr-dg-footer>
-    </clr-datagrid>
-    
-    <clr-datagrid [hidden]="!level5Display" style="max-height:450px">
-        <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+        <clr-datagrid [hidden]="!level2Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;padding-right:1rem">Score</clr-dg-column>
         
-        <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
-        <clr-dg-column>Name</clr-dg-column>
-        <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
+            <clr-dg-row *ngFor="let score of level2Scores; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level2Names[i]}} <span class="you-{{level2Ids[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level2Names.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+        
+        <clr-datagrid [hidden]="!level3Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level3Scores; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level3Names[i]}} <span class="you-{{level3Ids[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level3Names.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+        
+        <clr-datagrid [hidden]="!level4Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level4Scores; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level4Names[i]}} <span class="you-{{level4Ids[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level4Names.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+        
+        <clr-datagrid [hidden]="!level5Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Score</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level5Scores; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level5Names[i]}} <span class="you-{{level5Ids[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level5Names.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+    </div>
     
-        <clr-dg-row *ngFor="let score of level5Scores; let i = index" [attr.data-index]="i">
-            <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
-            <clr-dg-cell>{{level5Names[i]}} <span class="you-{{level5Ids[i]}}">(You)</span></clr-dg-cell>
-            <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
-        </clr-dg-row>
+    <div class="rate" [hidden]="!clickRate">
+        <clr-dropdown>
+            <button type="button" class="btn btn-outline-primary" clrDropdownTrigger>
+                Level {{ currentLevel }}
+                <clr-icon shape="caret down"></clr-icon>
+            </button>
+            <clr-dropdown-menu clrPosition="bottom" *clrIfOpen>
+                <a class="btn" href="/leaderboards/rate/1" routerLink="/leaderboards/rate/1" clrDropdownItem>Level 1</a>
+                <a class="btn" href="/leaderboards/rate/2" routerLink="/leaderboards/rate/2" clrDropdownItem>Level 2</a>
+                <a class="btn" href="/leaderboards/rate/3" routerLink="/leaderboards/rate/3" clrDropdownItem>Level 3</a>
+                <a class="btn" href="/leaderboards/rate/4" routerLink="/leaderboards/rate/4" clrDropdownItem>Level 4</a>
+                <a class="btn" href="/leaderboards/rate/5" routerLink="/leaderboards/rate/5" clrDropdownItem>Level 5</a>
+            </clr-dropdown-menu>
+        </clr-dropdown>
+        
+        <clr-datagrid [hidden]="!level1Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Rate</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level1Rate; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level1RateNames[i]}} <span class="you-{{level1RateIds[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level1RateNames.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+        
+        <clr-datagrid [hidden]="!level2Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Rate</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level2Rate; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level2RateNames[i]}} <span class="you-{{level2RateIds[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level2RateNames.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+        
+        <clr-datagrid [hidden]="!level3Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Rate</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level3Rate; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level3RateNames[i]}} <span class="you-{{level3RateIds[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level3RateNames.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+        
+        <clr-datagrid [hidden]="!level4Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Rate</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level4Rate; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level4RateNames[i]}} <span class="you-{{level4RateIds[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level4RateNames.length}} entries</clr-dg-footer>
+        </clr-datagrid>
+        
+        <clr-datagrid [hidden]="!level5Display" style="max-height:450px">
+            <clr-dg-placeholder>Loading...</clr-dg-placeholder>
+            
+            <clr-dg-column style="min-width:30px;width:30px;">#</clr-dg-column>
+            <clr-dg-column>Name</clr-dg-column>
+            <clr-dg-column style="min-width:80px;width:80px;">Rate</clr-dg-column>
+        
+            <clr-dg-row *ngFor="let score of level5Rate; let i = index" [attr.data-index]="i">
+                <clr-dg-cell style="min-width:30px;width:30px;">{{i+1}}</clr-dg-cell>
+                <clr-dg-cell>{{level5RateNames[i]}} <span class="you-{{level5RateIds[i]}}">(You)</span></clr-dg-cell>
+                <clr-dg-cell style="min-width:80px;width:80px;">{{score}}</clr-dg-cell>
+            </clr-dg-row>
+        
+            <clr-dg-footer>Updates in real time  &bull;  {{level5RateNames.length}} entries</clr-dg-footer>
+        </clr-datagrid>
     
-        <clr-dg-footer>Updates in real time  &bull;  {{level5Names.length}} entries</clr-dg-footer>
-    </clr-datagrid>
+    </div>
 </div>

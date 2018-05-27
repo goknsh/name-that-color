@@ -9,6 +9,14 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://ntc.knsh.red/tos</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ntc.knsh.red/privacy</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://ntc.knsh.red/about</loc>
     <priority>0.8</priority>
   </url>

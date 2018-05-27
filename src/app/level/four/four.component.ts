@@ -5,13 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 
 export interface response {
-  four: number
-};
-
-export interface leaderboard {
-  name: any,
-  scores: any,
-  id: any
+  four: number,
+  fourCr: any
 };
 
 @Component({
@@ -21,7 +16,7 @@ export interface leaderboard {
 })
 export class FourComponent implements OnInit {
 
-  question; time; timer; countTime; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerOptions = ["Red", "Yellow", "Blue", "Green"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; leaderboardScores = [ Infinity ]; leaderboardNames; leaderboardIds; leaderboardModal = false; leaderboardPosition;
+  question; time; timer; countTime; questionOptions = ["Red", "Yellow", "Blue", "Green"]; colorOptions = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerColors = ["#f00", "#ff0", "#0af", "#2eed2e"]; answerOptions = ["Red", "Yellow", "Blue", "Green"]; previousScore = "waiting to finish"; buttonText; color = "#e9ecef"; loggedIn = false; score = null; buttonDisabled = false; highScore; user; startTime; updateArr; currentCr; showCr;
   
   constructor(
     public afAuth: AngularFireAuth,
@@ -31,12 +26,7 @@ export class FourComponent implements OnInit {
       if (user !== null) {
         this.user = user; this.loggedIn = true;
         this.afs.collection('users').doc(user.uid).valueChanges().subscribe((data: response) => {
-          this.highScore = data.four;
-          this.afs.collection('leaderboard').doc('four').valueChanges().subscribe((data: leaderboard) => {
-            this.leaderboardNames = data.name;
-            this.leaderboardScores = data.scores;
-            this.leaderboardIds = data.id;
-          });
+          this.highScore = data.four; this.currentCr = data.fourCr; this.showCr = (data.fourCr[0]/(data.fourCr[1]/1000)).toFixed(3); if (this.showCr === "NaN") { this.showCr = "0.000"; }
         });
       } else {
         this.loggedIn = false;
@@ -50,7 +40,7 @@ export class FourComponent implements OnInit {
   }
   
   play() {
-    this.score = 0; this.buttonText = "Score: "; this.buttonDisabled = true;
+    this.score = 0; this.buttonText = "Score: "; this.buttonDisabled = true; this.startTime = new Date().getTime();
     
     this.question = this.questionOptions[Math.floor(Math.random() * Math.floor(4))];
     this.color = this.colorOptions[Math.floor(Math.random() * Math.floor(4))];
@@ -64,19 +54,10 @@ export class FourComponent implements OnInit {
     this.countTime = 3; this.time = ` — ${this.countTime}s`;
     this.timer = setInterval(() => {
       if (this.countTime === 1) {
+        this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+        this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-        }
-        let i = 0;
-        for (let score of this.leaderboardScores) {
-          if (this.score > score) {
-            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-            this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-          }
-          i++;
         }
         this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
       } else {
@@ -100,19 +81,10 @@ export class FourComponent implements OnInit {
         this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
+            this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+            this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-            }
-            let i = 0;
-            for (let score of this.leaderboardScores) {
-              if (this.score > score) {
-                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-                this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-              }
-              i++;
             }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
@@ -120,19 +92,10 @@ export class FourComponent implements OnInit {
           }
         }, 1000);
       } else {
+        this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+        this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-        }
-        let i = 0;
-        for (let score of this.leaderboardScores) {
-          if (this.score > score) {
-            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-            this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-          }
-          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
@@ -154,19 +117,10 @@ export class FourComponent implements OnInit {
         this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
+            this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+            this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-            }
-            let i = 0;
-            for (let score of this.leaderboardScores) {
-              if (this.score > score) {
-                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-                this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-              }
-              i++;
             }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
@@ -174,19 +128,10 @@ export class FourComponent implements OnInit {
           }
         }, 1000);
       } else {
+        this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+        this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-        }
-        let i = 0;
-        for (let score of this.leaderboardScores) {
-          if (this.score > score) {
-            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-            this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-          }
-          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
@@ -208,19 +153,10 @@ export class FourComponent implements OnInit {
         this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
+            this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+            this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-            }
-            let i = 0;
-            for (let score of this.leaderboardScores) {
-              if (this.score > score) {
-                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-                this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-              }
-              i++;
             }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
@@ -228,19 +164,10 @@ export class FourComponent implements OnInit {
           }
         }, 1000);
       } else {
+        this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+        this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-        }
-        let i = 0;
-        for (let score of this.leaderboardScores) {
-          if (this.score > score) {
-            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-            this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-          }
-          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }
@@ -262,19 +189,10 @@ export class FourComponent implements OnInit {
         this.countTime = 3; this.time = ` — ${this.countTime}s`;
         this.timer = setInterval(() => {
           if (this.countTime === 1) {
+            this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+            this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
             if (this.score > this.highScore) {
               this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-            }
-            let i = 0;
-            for (let score of this.leaderboardScores) {
-              if (this.score > score) {
-                this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-                this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-                this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-                this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-                this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-              }
-              i++;
             }
             this.previousScore = Object.assign(this.score); this.question = "Out of Time"; this.time = null; this.buttonText = `Click an answer to restart`; this.score = null; clearInterval(this.timer);
           } else {
@@ -282,19 +200,10 @@ export class FourComponent implements OnInit {
           }
         }, 1000);
       } else {
+        this.updateArr = [this.currentCr[0] + this.score, this.currentCr[1] + new Date().getTime() - this.startTime]; this.startTime = new Date().getTime();
+        this.afs.collection('users').doc(this.user.uid).update({ fourCr: this.updateArr });
         if (this.score > this.highScore) {
           this.afs.collection('users').doc(this.user.uid).update({ four: this.score });
-        }
-        let i = 0;
-        for (let score of this.leaderboardScores) {
-          if (this.score > score) {
-            this.leaderboardScores.splice(i, 0, this.score); this.leaderboardScores.pop();
-            this.leaderboardNames.splice(i, 0, this.user.displayName); this.leaderboardNames.pop();
-            this.leaderboardIds.splice(i, 0, this.user.uid); this.leaderboardIds.pop();
-            this.afs.collection('leaderboard').doc('four').set({ name: this.leaderboardNames, scores: this.leaderboardScores, id: this.leaderboardIds });
-            this.leaderboardModal = true; this.leaderboardPosition = i + 1; break;
-          }
-          i++;
         }
         this.previousScore = Object.assign(this.score); this.score = null; this.question = "Wrong"; this.time = null; this.buttonText = `Click an answer to restart`; clearInterval(this.timer);
       }

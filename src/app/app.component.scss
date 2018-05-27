@@ -5,6 +5,7 @@ clr-main-container {
   .header {
     background: transparent;
     .branding {
+      padding: 0;
       .nav-icon {
         opacity: .65;
         transition: 300ms ease-in-out opacity;

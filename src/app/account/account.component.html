@@ -7,17 +7,62 @@
                 <p>{{ user.email }}</p>
             </div>
         </div>
-        <h4>Level 1 High Score: {{ score[0] }}
-        <br>Level 2 High Score: {{ score[1] }}
-        <br>Level 3 High Score: {{ score[2] }}
-        <br>Level 4 High Score: {{ score[3] }}
-        <br>Level 5 High Score: {{ score[4] }}
+        <div class="data-outer">
+            <div class="data">
+                <h4>Level 1</h4>
+                <p>High Score: {{ score[0] }}<br>{{ score[5] }} clicks/sec</p>
+                <a href="javascript:void(0)" (click)="askResetClickRate(1)">Reset click rate</a>
+            </div>
+            <div class="data">
+                <h4>Level 2</h4>
+                <p>High Score: {{ score[1] }}<br>{{ score[6] }} clicks/sec</p>
+                <a href="javascript:void(0)" (click)="askResetClickRate(2)">Reset click rate</a>
+            </div>
+        </div>
+        <div class="data-outer">
+            <div class="data">
+                <h4>Level 3</h4>
+                <p>High Score: {{ score[2] }}<br>{{ score[7] }} clicks/sec</p>
+                <a href="javascript:void(0)" (click)="askResetClickRate(3)">Reset click rate</a>
+            </div>
+            <div class="data">
+                <h4>Level 4</h4>
+                <p>High Score: {{ score[3] }}<br>{{ score[8] }} clicks/sec</p>
+                <a href="javascript:void(0)" (click)="askResetClickRate(4)">Reset click rate</a>
+            </div>
+        </div>
+        <div class="data-outer">
+            <div class="data">
+                <h4>Level 5</h4>
+                <p>High Score: {{ score[4] }}<br>{{ score[9] }} clicks/sec</p>
+                <a href="javascript:void(0)" (click)="askResetClickRate(5)">Reset click rate</a>
+            </div>
+            <div class="data">
+                <h4>Average</h4>
+                <p>{{ averageClickRate }} clicks/sec</p>
+            </div>
+        </div>
         <a href="/leaderboards" routerLink="/leaderboards" class="btn btn-outline">Leaderboards</a>
-        <a class="btn btn-primary" (click)="logout()">Logout</a></h4>
+        <a class="btn btn-primary" (click)="logout()">Logout</a>
+        <br>
+        <a href="/tos" routerLink="/tos">Terms of Service</a> // 
+        <a href="/privacy" routerLink="/privacy">Privacy Policy</a> //
+        <a href="/feedback" routerLink="/feedback">Feedback</a>
     </div>
     <ng-template #showLogin>
         <h1>Login</h1>
-        <p>If you get an account, your high scores will be saved across devices and with a high-enough score, you&rsquo;ll get on the leaderboards</p>
+        <p>By logging in, your high scores will be saved across devices and with a high-enough score, you can get on the leaderboards. By logging in, you also agree to our <a href="/tos" routerLink="/tos">terms of service</a> and <a href="/privacy" routerLink="/privacy">privacy policy</a>.</p>
         <a class="btn btn-primary" (click)="login()">Login with Google</a>
     </ng-template>
 </div>
+
+<clr-modal [(clrModalOpen)]="resetClickRateModal" [clrModalClosable]="false">
+  <h3 class="modal-title">Are you sure?</h3>
+  <div class="modal-body">
+    <p>Are you 100% sure that you want to reset your click rate for Level {{ resetClickRateLevel }}? This action cannot be undone.</p>
+  </div>
+  <div class="modal-footer">
+    <a type="button" class="btn btn-outline" (click)="resetClickRateModal = false">Cancel</a>
+    <a type="button" class="btn btn-primary" (click)="resetClickRate(resetClickRateLevel)">Confirm Reset</a>
+  </div>
+</clr-modal>
